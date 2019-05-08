@@ -1,0 +1,19 @@
+import telnetlib
+
+lists = [ip1, ip2, ip3, ip4]
+data = {}
+data[ip1] = [20080,8000,8001,8002,8005,8006,8007,8008,8009,8010,8761]
+data[ip2] = [8000,8001,8002,8005,8006,8007,8008,8009,8010,8012]
+data[ip3] = [4000,50051,50001,50002]
+data[ip4] = [50051,50052,50001,50002]
+
+for list in lists:
+	print ('start check %s:' %(list))
+	for port in data[list]:
+		try:
+			tn=telnetlib.Telnet(list, port, timeout=2)
+			print ('Port %s is ok' %(port))
+		except:
+			print ('------ Port %s is False ------' %(port))
+
+
